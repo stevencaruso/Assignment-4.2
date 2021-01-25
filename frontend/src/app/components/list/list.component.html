@@ -1,0 +1,51 @@
+<div>
+  <br>
+  <mat-card>
+    <button mat-raised-button color="primary" routerLink="/create">Add New Player</button>
+    <br><br>
+    <mat-divider></mat-divider>
+    <br>
+    <table mat-table [dataSource]="players">
+      <ng-container matColumnDef="First_Name">
+        <th mat-header-cell *matHeaderCellDef> First_Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.First_Name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Last_Name">
+        <th mat-header-cell *matHeaderCellDef> Last Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.Last_Name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Age">
+        <th mat-header-cell *matHeaderCellDef> Age </th>
+        <td mat-cell *matCellDef="let element"> {{element.Age}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Free_Throws">
+        <th mat-header-cell *matHeaderCellDef> Free Throws </th>
+        <td mat-cell *matCellDef="let element"> {{element.Free_Throws}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Dunks">
+        <th mat-header-cell *matHeaderCellDef> Dunks </th>
+        <td mat-cell *matCellDef="let element"> {{element.Dunks}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Death_of_Fans">
+        <th mat-header-cell *matHeaderCellDef> Death of Fans </th>
+        <td mat-cell *matCellDef="let element"> {{element.Death_of_Fans}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef class="mat-column-right"> Actions </th>
+          <td mat-cell *matCellDef="let element" class="mat-column-right">
+            <button mat-button color="primary" (click)="editPlayer(element._id)">Edit Player</button>
+            <button mat-button color="warn" (click)="deletePlayer(element._id)">Delete Player</button>
+          </td>
+        </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card>
+</div>
